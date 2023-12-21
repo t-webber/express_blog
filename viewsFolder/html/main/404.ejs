@@ -1,0 +1,8 @@
+<h1>Error <%= err.code %></h1> 
+<% if (err.code == "") { %>
+<p>Sorry, the page you're looking for doesn't exist, or an internal error occured.</p>
+<% } else { %>
+    <p><%=err.message%></p>
+<% } %>
+<p><%=err.err%></p>
+<img src="/404.png" alt="404 error image">

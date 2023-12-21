@@ -1,0 +1,61 @@
+<main>
+    <div class="container">
+        <h1>ToDoList</h1>
+        <div id="tasks">
+            <div id="texts"></div>
+            <div id="buttons"></div>
+        </div>
+        <div class="add">
+            <input type="text" id="Input" placeholder="New task">
+            <button id="Submit">Submit</button>
+        </div>
+        
+    </div>
+    <script>
+        const BTN = document.getElementById('Submit');
+        const INPUT = document.getElementById('Input');
+        const TEXTS = document.getElementById('texts');
+        const BUTTONS = document.getElementById('buttons');
+
+        var taskId = 0;
+
+        BTN.onclick = addItem;
+        INPUT.onkeyup = (e) => {
+            if (e.keyCode === 13) addItem();
+        };
+
+
+        function addItem () {
+            if (INPUT.value === '') return alert('Please enter a task');
+            let newTask = document.createElement('div');
+            newTask.id = taskId.toString();
+            taskId++;
+
+            let text = document.createElement('span');
+            text.innerText = INPUT.value.toString();
+            text.id = 'text' + taskId;
+            
+            let buttons = document.createElement('span');
+            buttons.innerHTML = `<button id='edit${taskId}' onclick='edit(${taskId})' class='edit'>Edit</button><button id='delete${taskId}'  onclick='deleteItem(${taskId})'  class=delete''>Delete</button>`;
+
+            TEXTS.appendChild(text);
+            BUTTONS.appendChild(buttons);
+
+            INPUT.value = '';
+        };
+
+        function edit (i) {
+            let x = prompt('Edit task');
+            if (x === '') {alert('Please enter a task'); edit(i);}
+            else {
+                document.getElementById('text' + i).innerText = x;
+            }
+        };
+
+        function deleteItem (i) {
+            const elt = document.getElementById(i.toString());
+            elt.remove();
+        };
+
+    </script>
+</main>

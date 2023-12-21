@@ -1,0 +1,36 @@
+/* FILEPATH: /w:/OneDrive - telecom-paristech.fr/Files/DeV/Web/Online/viewsFolder/pages/apps.css */
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+.container a {
+    text-decoration: none;
+    border: 1px solid;
+    padding: 10px;
+    margin: 5px;
+    font-size: 20px;
+    display: inline-block;
+}
+
+a:hover {
+    background: var(--txt-color);
+    color: var(--bkg-color);
+}

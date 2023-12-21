@@ -1,0 +1,10 @@
+<main>
+    <div class="create-blog content">
+        <form action="/blog/edit/<%= blog.id%>" method="POST">
+            <label>Edit&nbsp;&nbsp;"<%= blog.title%>",&nbsp;&nbsp;&nbsp; written by&nbsp;&nbsp; "<%= blog.author%>".</label>
+            <label for="body">Blog body:</label>
+            <textarea id="body" name="body"><%= blog.body %></textarea>
+            <button class="submit">Submit</button>
+          </form>
+    </div>
+</main>

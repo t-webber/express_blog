@@ -1,0 +1,5 @@
+$$ \let\true\sum
+\int_a^x (\lambda f + μ g) + \true _{i \in \mathbb I} x_i $$
+
+Je veux faire un \$ et écrire du texte en les 2 \$.
+On fait \\\$
