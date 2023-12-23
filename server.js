@@ -3,9 +3,9 @@
 //
 
 // const constants = require('./modulesFolder/constants.js');
-const usersModule = require('./modulesFolder/users.js');
-const errorModule = require('./modulesFolder/error.js');
-const blogModule = require('./modulesFolder/blog.js');
+const usersModule = require('./modules/users.js');
+const errorModule = require('./modules/error.js');
+const blogModule = require('./modules/blog.js');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -22,13 +22,13 @@ const jsonParser = bodyParser.json();
 //
 
 app.set('view engine', 'ejs');
-app.set('views', 'viewsFolder');
+// app.set('views', 'viewsFolder');
 
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
 
-app.use(express.static('publicFolder'));
+app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(morgan('dev'));
 

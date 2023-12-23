@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    <%- include('./main.css') %>
+    <%- include('./header.css') %>
+    <%- include('./darkLight.css') %>
+    <%- include('../css/'+ filepath + '.css') %>
+  </style>
+
+  <title>Website | <%= pagetitle %></title>
+
+</head>
+
+<body>
+
+  <%- include('./header.ejs') %>
+  <%- include('../html/' + filepath + '.ejs') %>
+
+  <script>
+
+  
+
+    const darkLightBtn = document.getElementById("darkLightBtn");
+    const classLists = document.body.classList;
+    var nb = 0;
+    classLists.toggle("light-theme"); //FIXME: add dark mode to backend
+
+    darkLightBtn.onclick = function () {
+      nb = parseInt(nb) + 1;
+      if (nb % 2 == 0){
+        classLists.toggle("light-theme");
+      } else {
+        classLists.toggle("dark-theme");
+      }
+    }
+
+    <%- include('../js/mathjax.js') %>
+  </script>
+
+</body>
+
+</html>
