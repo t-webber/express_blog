@@ -3,17 +3,30 @@ const fs = require('fs');
 const constants = require('./constants.js');
 // const errorModule = require('./error.js');
 const usersPath = './data/users.csv';
+const bcrypt = require('bcryptjs');
+
+function compareAsync(param1, param2) {
+  return new Promise(function(resolve, reject) {
+      bcrypt.compare(param1, param2, function(err, res) {
+          if (err) {
+               reject(err);
+          } else {
+               resolve(res);
+          }
+      });
+  });
+}
 
 function lookForUser(body, user) {
   return new Promise((resolve, reject) => {
-    fs.readFile(usersPath, (err, data) => {
+    fs.readFile(usersPath, async (err, data) => {
       if (err) {
         console.log(err);
         reject(err);
       }
       const lines = data.toString().split('\n');
-      let exists = false;
-      let right = false;
+      var exists = false;
+      var right = false;
       for (const line of lines) {
         const elts = line.split(';');
         if (elts.length != 3) {
@@ -22,7 +35,10 @@ function lookForUser(body, user) {
         }
         if (elts[1] == body.mail) {
           exists = true;
-          right = elts[2] == body.pass;
+          const hash_input = await bcrypt.hashSync(body.pass, 10);
+          console.log(' * Hashed input = ', hash_input);
+          console.log(' * Hashed pass = ', elts[2]);
+          right = await compareAsync(body.pass, elts[2]);
           if (right) {
             user.connected = true;
             user.name = elts[0];
@@ -63,7 +79,7 @@ function writeUser(body, user, data) {
   });
 }
 
-function createUser(body, res, user) {
+async function createUser(body, res, user) {
   console.log(' * Creating user with fields = ', body);
   const data = body.name + ';' + body.mail + ';' + body.pass + '\n';
   console.log(' * Data = ', data);
@@ -86,7 +102,7 @@ function createUser(body, res, user) {
 }
 
 function checkUser(body, res, user) {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     console.log(' * Creating user with fields = ', body);
     const data = body.name + ';' + body.mail + ';' + body.pass + '\n';
     console.log(' * Data = ', data);
