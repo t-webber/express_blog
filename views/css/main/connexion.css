@@ -1,3 +1,4 @@
+
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("connexion_background.jpg");
     background-size: cover;
@@ -17,8 +18,9 @@ main {
     justify-content: center;
     align-items: center;
     background: rgba(255, 255, 255, 0.7);
-    max-width: 600px;
-    max-height: 600px;
+    width: max(40vw, 600px);
+    height: max(40vh, 600px);
+    margin: 5vw 5vh;
     padding: 0px 40px;
     padding-bottom: 20px;
 }

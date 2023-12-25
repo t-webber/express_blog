@@ -9,27 +9,27 @@
     cursor: pointer;
     display: inline-block;
     position: relative;
-    width: 70px;
-    height: 30px;
+    width: 7.0vh;
+    height: 3.0vh;
     background-color: #83d8ff;
-    border-radius: 100px;
+    border-radius: 10.0vh;
     transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
   }
   
   /* .toggle:before {
     content: "AM";
     position: absolute;
-    left: -40px;
-    top: 4px;
-    font-size: 18px;
+    left: -4.0vh;
+    top: 0.4vh;
+    font-size: 1.8vh;
   } */
   
   /* .toggle:after {
     content: "PM";
     position: absolute;
-    right: -40px;
-    top: 4px;
-    font-size: 18px;
+    right: -4.0vh;
+    top: 0.4vh;
+    font-size: 1.8vh;
     color: #749ed7;
   } */
   
@@ -38,13 +38,13 @@
     display: inline-block;
     position: relative;
     z-index: 1;
-    top: 3px;
-    left: 2px;
-    width: 25px;
-    height: 25px;
+    top: 0.3vh;
+    left: 0.2vh;
+    width: 2.5vh;
+    height: 2.5vh;
     background-color: #ffcf96;
-    border-radius: 50px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 5.0vh;
+    box-shadow: 0 0.2vh 0.6vh rgba(0, 0, 0, 0.3);
     transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transform: rotate(-45deg);
   }
@@ -58,24 +58,24 @@
   }
   
   .toggle__handler .crater--1 {
-    top: 18px;
-    left: 12px;
-    width: 4px;
-    height: 4px;
+    top: 1.8vh;
+    left: 1.2vh;
+    width: 0.4vh;
+    height: 0.4vh;
   }
   
   .toggle__handler .crater--2 {
-    top: 28px;
-    left: 22px;
-    width: 6px;
-    height: 6px;
+    top: 2.8vh;
+    left: 2.2vh;
+    width: 0.6vh;
+    height: 0.6vh;
   }
   
   .toggle__handler .crater--3 {
-    top: 10px;
-    left: 25px;
-    width: 8px;
-    height: 8px;
+    top: 1.0vh;
+    left: 2.5vh;
+    width: 0.8vh;
+    height: 0.8vh;
   }
   
   
@@ -88,29 +88,29 @@
   
   
   .star--1 {
-    top: 4px;
-    left: 30px;
+    top: 0.4vh;
+    left: 3.0vh;
     z-index: 0;
-    width: 23px;
-    height: 2px;
+    width: 2.3vh;
+    height: 0.2vh;
   }
   
   
   .star--2 {
-    top: 12px;
-    left: 35px;
+    top: 1.2vh;
+    left: 3.5vh;
     z-index: 1;
-    width: 30px;
-    height: 3px;
+    width: 3.0vh;
+    height: 0.3vh;
   }
   
   
   .star--3 {
-    top: 20px;
-    left: 33px;
+    top: 2.0vh;
+    left: 3.3vh;
     z-index: 0;
-    width: 28px;
-    height: 3px;
+    width: 2.8vh;
+    height: 0.3vh;
   }
   
   
@@ -123,32 +123,32 @@
   
   
   .star--4 {
-    top: 7px;
-    left: 11px;
+    top: 0.7vh;
+    left: 1.1vh;
     z-index: 0;
-    width: 2px;
-    height: 2px;
-    transform: translate3d(3px, 0, 0);
+    width: 0.2vh;
+    height: 0.2vh;
+    transform: translate3d(.3vh, 0, 0);
   }
   
   
   .star--5 {
-    top: 11px;
-    left: 20px;
+    top: 1.1vh;
+    left: 2.0vh;
     z-index: 0;
-    width: 3px;
-    height: 3px;
-    transform: translate3d(3px, 0, 0);
+    width: 0.3vh;
+    height: 0.3vh;
+    transform: translate3d(.3vh, 0, 0);
   }
   
   
   .star--6 {
-    top: 20px;
-    left: 10px;
+    top: 2.0vh;
+    left: 1.0vh;
     z-index: 0;
-    width: 2px;
-    height: 2px;
-    transform: translate3d(3px, 0, 0);
+    width: 0.2vh;
+    height: 0.2vh;
+    transform: translate3d(.3vh, 0, 0);
   }
   
   
@@ -166,7 +166,7 @@
   
   input:checked + .toggle .toggle__handler {
     background-color: #ffe5b5;
-    transform: translate3d(40px, 0, 0) rotate(0);
+    transform: translate3d(4.0vh, 0, 0) rotate(0);
   }
   
   input:checked + .toggle .toggle__handler .crater {
@@ -174,20 +174,20 @@
   }
   
   input:checked + .toggle .star--1 {
-    width: 2px;
-    height: 2px;
+    width: 0.2vh;
+    height: 0.2vh;
   }
   
   input:checked + .toggle .star--2 {
-    width: 4px;
-    height: 4px;
-    transform: translate3d(-5px, 0, 0);
+    width: 0.4vh;
+    height: 0.4vh;
+    transform: translate3d(-.5vh, 0, 0);
   }
   
   input:checked + .toggle .star--3 {
-    width: 2px;
-    height: 2px;
-    transform: translate3d(-7px, 0, 0);
+    width: 0.2vh;
+    height: 0.2vh;
+    transform: translate3d(-.7vh, 0, 0);
   }
   
   input:checked + .toggle .star--4,

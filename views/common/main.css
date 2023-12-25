@@ -19,10 +19,7 @@ body.dark-theme {
     --bkg-field: #464646;
 }
 
-input, textarea {
-    color: var(--txt-color);
-    background: var(--bkg-field);
-}
+
 
 body {
     margin: 0;
@@ -31,17 +28,32 @@ body {
 
 main {
     color: var(--txt-color);
-    margin-bottom: 6vh;
+    margin-bottom: 1vh;
     margin-right: 6vh;
     margin-left: 6vh;
     margin-top: 1vh;
 }
+
+main * {
+    transition: 0.5s;
+}
+
+
+
+
 
 
 a {
     color : var(--link-color);
     text-decoration: none;
 }
+
+input, textarea {
+    color: var(--txt-color);
+    background: var(--bkg-field);
+}
+
+
 
 .submit {
     padding: 10px 10px;

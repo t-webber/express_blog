@@ -1,12 +1,13 @@
 
-<div id="top-bar">
+<div id="top-bar"> <!--TODO: menu deroulant pour par exemple create blog, ...-->
+    <!-- TODO: Style for mobiles -->
     <button id="activate">
         <div class="line one"></div>
         <div class="line two"></div>
         <div class="line three"></div>
-        <div class="text">&lt;</div>
+        <div class="text">&gt;</div>
     </button>
-    <ul>
+    <ul id="top-nav-ul">
         <li><a href='/'>Home</a></li>
         <li><a href='/apps'>Apps</a></li>
         <li><a href='/blog'>Blog</a></li>
@@ -43,11 +44,11 @@
             const MENUBTNTXT = document.querySelector('#activate .text');
         
             MENUBTN.onclick = function() {
-                document.body.classList.toggle('menu-open');
-                if (MENUBTNTXT.innerHTML == "&lt;") {
-                    MENUBTNTXT.innerHTML = "&gt;"
-                } else {
+                document.body.classList.toggle('menu-hidden');
+                if (MENUBTNTXT.innerHTML == "&gt;") {
                     MENUBTNTXT.innerHTML = "&lt;"
+                } else {
+                    MENUBTNTXT.innerHTML = "&gt;"
                 }
             }
         

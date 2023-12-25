@@ -9,10 +9,23 @@ const blogModule = require('./modules/blog.js');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
+
+
+
 
 //
 // Constants
-//
+//flya vvno jgpi cdmz
+// Your app password for your device
+// livh mpuv ilbc opdc
+// How to use it
+// Go to the settings for your Google Account in the application or device you are trying to set up. Replace your password with the 16-charactYour app password for your device
+// livh mpuv ilbc opdc
+// How to use it
+// Go to the settings for your Google Account in the application or device you are trying to set up. Replace your password with the 16-character password shown above.
+// Just like your normal password, this app password grants complete access to your Google Account. You won't need to remember it, so don't write it down or share it with anyone.
+
 
 const app = express();
 const jsonParser = bodyParser.json();
@@ -36,15 +49,17 @@ app.use(morgan('dev'));
 // Variables
 //
 
-var user = {connected: false};
+var user = {connected: false, theme: "light-theme"};
 
 //
 // Main
 //
 
-app.get('/', (req, res) => {
-  console.log(user);
-  res.render('common/main', {pagetitle: 'Home', user, filepath: 'main/home'});
+app.get('/', async (req, res) => {
+  console.log(user);  
+  var blogs = [];
+  await blogModule.funlistBlogs(blogs);
+  res.render('common/main', {pagetitle: 'Home', user, filepath: 'main/home', blogs});
 });
 
 app.get('/index', (req, res) => res.redirect('/'));
@@ -172,7 +187,7 @@ app.get('/profile', (req, res) => {
   });
 });
 
-app.get('/connexion', (req, res) => {
+app.get('/connexion', (req, res) => { //FIXME: Don't store password not hashed
   user = {connected: false};
   res.render('common/main', {
     pagetitle: 'Profile',
@@ -200,13 +215,5 @@ app.post('/signUp', jsonParser, async (req, res) => {
 //
 
 app.use((req, res) => {
-  // res.render('common/main', {
-  //   pagetitle: '404',
-  //   user,
-  //   filepath: 'main/404',
-  //   err: '',
-  //   code: 404,
-  //   message: 'Page not found',
-  // });
   errorModule.error(res, user, '', 'Page not found', 404);
 });

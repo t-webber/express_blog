@@ -1,7 +1,7 @@
 
    
    .create-blog {
-        width: 600px;
+        width: 80vw;
         margin: 0 auto;
         background-color: transparent;
         border: 0;
@@ -20,6 +20,7 @@
         margin-bottom: 10px;
         border: 2px solid #ccc;
         border-radius: 3px;
+        font-size: 16px;
     }
 
     /* .create-blog button {
@@ -36,5 +37,5 @@
     } */
 
     textarea {
-        height: 175px;
+        height: max(40vh, 300px);
     }

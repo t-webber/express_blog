@@ -24,19 +24,25 @@
 
   <script>
 
-  
+    
 
     const darkLightBtn = document.getElementById("darkLightBtn");
     const classLists = document.body.classList;
     var nb = 0;
-    classLists.toggle("light-theme"); //FIXME: add dark mode to backend
+    <% if (user.dark) { %>
+      classLists.toggle("dark-theme");
+    <% } else { %>
+      classLists.toggle("light-theme");
+    <% } %>
 
     darkLightBtn.onclick = function () {
       nb = parseInt(nb) + 1;
       if (nb % 2 == 0){
         classLists.toggle("light-theme");
+        <% user.dark = false %>
       } else {
         classLists.toggle("dark-theme");
+        <% user.dark = true %>
       }
     }
 
