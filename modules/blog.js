@@ -4,7 +4,7 @@ const blogPath = './data/blog/';
 
 function createBlog(req, res, user) {
   console.log('Creating blog with fields = ', req.body);
-  const id = req.body.title + '_' + req.body.author;
+  const id = req.body.title + ';' + req.body.author;
   const path = blogPath + id + '.txt';
 
   if (!fs.existsSync(path)) {
@@ -36,7 +36,7 @@ async function getBlogContent(req, res, user, id) {
       });
     } else {
       errorModule.error(res, user, '', 'This blog doesn\'t exists', 404);
-      reject(new Error('the blog doesn\'t exists'));
+      reject(new Error('The blog doesn\'t exists'));
     }
   });
 };
@@ -81,7 +81,7 @@ async function pushesABlog(listBlogs, file) {
         console.error(err);
         reject(err);
       };
-      const elts = file.split('_');
+      const elts = file.split(';');
       console.log('Creating blog on');
       console.log(elts);
       listBlogs.push({id: file.slice(0, -4), title: elts[0],

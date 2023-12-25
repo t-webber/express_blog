@@ -13,7 +13,7 @@ let onSignUp = true;
 SIGNIN.onclick = function (event) {
   frontEndSignIn();
   event.preventDefault();
-}
+};
 
 SIGNUP.onclick = function (event) {
   frontEndSignUp();
@@ -39,16 +39,14 @@ function frontEndSignIn() {
     TITLE.innerHTML = "Sign In";
     onSignUp = false;
     DIVNAME.innerHTML = "";
-  } else if (MAILFIELD.value == "" && PASSFIELD.value == "") {
+  } else if (MAILFIELD.value == "") {
     DIVMAIL.style.border = "2px solid red";
+  } else if (PASSFIELD.value == "") {
     DIVPASS.style.border = "2px solid red";
   } else {
     fetchSignIn(MAILFIELD.value, PASSFIELD.value);
   }
-};
-
-
-
+}
 
 function frontEndSignUp() {
   if (!onSignUp) {
@@ -61,26 +59,33 @@ function frontEndSignUp() {
     DIVNAME.style.border = "2px solid transparent";
     DIVMAIL.style.border = "2px solid transparent";
     DIVPASS.style.border = "2px solid transparent";
-  } else if (
-    NAMEFIELD.value == "" &&
-    MAILFIELD.value == "" &&
-    PASSFIELD.value == ""
-  ) {
+  } else if (NAMEFIELD.value == "") {
     DIVNAME.style.border = "2px solid red";
+    window.alert("Please provide a name");
+  } else if (NAMEFIELD.value.includes(";")) {
+    DIVNAME.style.border = "2px solid red";
+    window.alert("Please don't use ';' in your name");
+  } else if (
+    MAILFIELD.value == "" ||
+    !MAILFIELD.value.includes("@") ||
+    !MAILFIELD.value.includes(".")
+  ) {
     DIVMAIL.style.border = "2px solid red";
+    window.alert("Please provide a valid email");
+  } else if (PASSFIELD.value == "") {
     DIVPASS.style.border = "2px solid red";
+    window.alert("Please provide a password");
   } else {
     fetchSignUp(NAMEFIELD.value, MAILFIELD.value, PASSFIELD.value);
   }
-};
-
+}
 
 function fetchSignIn(mail, pass) {
   const data = {
     mail: mail,
     pass: pass,
   };
- 
+
   fetch("/signIn", {
     method: "POST",
     headers: {
@@ -99,15 +104,13 @@ function fetchSignIn(mail, pass) {
     });
 }
 
-
-
 function fetchSignUp(name, mail, pass) {
   const data = {
     name: name,
     mail: mail,
     pass: pass,
   };
- 
+
   fetch("/signUp", {
     method: "POST",
     headers: {

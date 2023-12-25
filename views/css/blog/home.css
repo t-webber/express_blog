@@ -1,42 +1,44 @@
-       .blogs {
-            display: flex;
-            flex-direction: column;
-            margin-top: 50px;
-        }
+.blogs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
 
-        .all-blogs {
-            font-size: 30px;
-            font-weight: bold;
-            margin-top: 10px;
-            margin-bottom: 20px;
-        }
+.all-blogs {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
 
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 30px;
-        }
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 30px;
+}
 
-        .author {
-            font-size: 18px;
-            margin-top: 10px;
-        }
+.author {
+  font-size: 18px;
+  margin-top: 10px;
+}
 
-        .body {
-            font-size: 16px;
-            margin-top: 10px;
-            margin-bottom: 50px;
-        }
+.body {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
 
-       .edit-img:hover, .delete-icon:hover {
-            color: blue;
-        }
+.edit-img:hover,
+.delete-icon:hover {
+  color: blue;
+}
 
-        .edit-img, .delete-img {
-            font-size: 20px;
-            margin-left: 10px;
-            cursor: pointer;
-            width: 20px;
-            height: 20px;
-            background: transparent;
-        }
+.edit-img,
+.delete-img {
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+}

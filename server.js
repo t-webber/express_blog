@@ -49,7 +49,7 @@ app.use(morgan('dev'));
 // Variables
 //
 
-var user = {connected: false, theme: "light-theme"};
+var user = {connected: false, dark: false};
 
 //
 // Main
@@ -67,6 +67,7 @@ app.get('/home', (req, res) => res.redirect('/'));
 app.get('/main', (req, res) => res.redirect('/'));
 
 app.get('/about', (req, res) => {
+  console.log(user);
   res.render('common/main', {
     pagetitle: 'About',
     user,
@@ -81,6 +82,16 @@ app.get('/contact', (req, res) => {
     filepath: 'main/contact',
   });
 });
+
+app.post('/dark-theme', (req, res) => { //NB: Not stylish to proceed this way
+  user.dark = true;
+  res.redirect('back');
+});
+app.post('/light-theme', (req, res) => { //NB: Not stylish to proceed this way
+  user.dark = false;
+  res.redirect('back');
+});
+
 //
 // Blog
 //
@@ -116,7 +127,7 @@ app.get('/blog/create', (req, res) => {
 
 app.get('/blog/edit/:id', async (req, res) => {
   const id = req.params.id;
-  const elts = id.toString().split('_');
+  const elts = id.toString().split(';');
   const data = await blogModule.getBlogContent(req, res, user, id);
   console.log(' ====== EDITING ====== ');
   console.log(data);
@@ -213,6 +224,11 @@ app.post('/signUp', jsonParser, async (req, res) => {
 //
 // Catch 404
 //
+
+app.get('/favicon.ico', (req, res) => {
+  // res.sendFile(__dirname + '/public/favicon.ico');
+  res.status(204)
+});
 
 app.use((req, res) => {
   errorModule.error(res, user, '', 'Page not found', 404);

@@ -1,10 +1,14 @@
-import bycript from 'bcrypt'
+const bcrypt = require('bcryptjs');
 
-const password = '123456'
+const password = '123456';
 
-const hash = await bcrypt.hash(password, 10)
-
-console.log({
-    password, 
-    hash
-})
+bcrypt.hash(password, 10).then((hash) => {
+    console.log(' * Hash = ', hash);
+    bcrypt.compare(password, hash).then((res) => {
+        console.log(' * Result = ', res);
+    }).catch((err) => {
+        console.log(' * Error = ', err);
+    })
+}).catch((err) => {
+    console.log(' * Error = ', err);
+});

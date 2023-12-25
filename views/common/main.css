@@ -34,11 +34,9 @@ main {
     margin-top: 1vh;
 }
 
-main * {
+main > * {
     transition: 0.5s;
 }
-
-
 
 
 
