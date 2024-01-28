@@ -5,7 +5,7 @@ const constants = require("./constants.js");
 const usersPath = "./data/users.csv";
 const bcrypt = require("bcryptjs");
 
-fs.open(usersPath, "w", function (err, _) {
+fs.open(usersPath, "a", function (err, _) {
   if (err) {
     console.log(err);
   }
