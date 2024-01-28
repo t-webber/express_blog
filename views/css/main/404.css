@@ -1,0 +1,21 @@
+body {
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 3em;
+  text-align: center;
+  margin-top: 50px;
+}
+p {
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 20px;
+}
+img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  margin-top: 50px;
+}

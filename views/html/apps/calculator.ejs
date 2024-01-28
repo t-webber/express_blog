@@ -1,0 +1,174 @@
+<main>
+  <div class="container">
+    <div class="calculator">
+      <div class="form">
+        <div class="display">
+          <input id="input">
+        </div>
+        <div>
+          <button id="AC">AC</button>
+          <button id="DE">DE</button>
+          <button id="dot">.</button>
+          <button id="div">/</button>
+        </div>
+        <div>
+          <button id="7">7</button>
+          <button id="8">8</button>
+          <button id="9">9</button>
+          <button id="star">*</button>
+        </div>
+        <div>
+          <button id="4">4</button>
+          <button id="5">5</button>
+          <button id="6">6</button>
+          <button id="ne">-</button>
+        </div>
+        <div>
+          <button id="1">1</button>
+          <button id="2">2</button>
+          <button id="3">3</button>
+          <button id="plus">+</button>
+        </div>
+        <div>
+          <button id="00">00</button>
+          <button id="0">0</button>
+          <button id="eq">=</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const INPUT = document.getElementById('input');
+    justChanged = false;var justChange
+    d = false;
+
+    document.getElementById('AC').onclick = function() {
+        justChanged = false;
+        INPUT.value = '';
+    }
+    document.getElementById('DE').onclick = function() {
+        justChanged = false;
+        if (INPUT.value.length > 0) {
+        INPUT.value = INPUT.value.slice(0, -1);
+      }
+    }
+    document.getElementById('0').onclick = function() {
+        justChanged = false;
+        if (INPUT.value == '0') {
+        INPUT.value = '';
+      };
+      INPUT.value += '0';
+    }
+    document.getElementById('00').onclick = function() {
+        justChanged = false;
+        if (INPUT.value == '0') {
+        INPUT.value = '';
+      };
+      INPUT.value += '00';
+    }
+    document.getElementById('1').onclick = function() {
+        if (justChanged) {
+            INPUT.value = '';
+            justChanged = false;
+      };
+      INPUT.value += '1';
+    }
+    document.getElementById('2').onclick = function() {
+        if (justChanged) {
+            INPUT.value = '';
+            justChanged = false;
+      };
+      INPUT.value += '2';
+    }
+    document.getElementById('3').onclick = function() {
+        if (justChanged) {
+            INPUT.value = '';
+            justChanged = false;
+      };
+      INPUT.value += '3';
+    }
+    document.getElementById('4').onclick = function() {
+        if (justChanged) {
+            INPUT.value = '';
+            justChanged = false;
+      };
+      INPUT.value += '4';
+    }
+    document.getElementById('5').onclick = function() {
+        if (justChanged) {
+            INPUT.value = '';
+            justChanged = false;
+      };
+      INPUT.value += '5';
+    }
+    document.getElementById('6').onclick = function() {
+        if (justChanged) {
+            INPUT.value = '';
+            justChanged = false;
+      };
+      INPUT.value += '6';
+    }
+    document.getElementById('7').onclick = function() {
+        if (justChanged) {
+            INPUT.value = '';
+            justChanged = false;
+      };
+      INPUT.value += '7';
+    }
+    document.getElementById('8').onclick = function() {
+        if (justChanged) {
+            INPUT.value = '';
+            justChanged = false;
+      };
+      INPUT.value += '8';
+    }
+    document.getElementById('9').onclick = function() {
+        if (justChanged) {
+            INPUT.value = '';
+            justChanged = false;
+      };
+      INPUT.value += '9';
+    }
+    document.getElementById('eq').onclick = function() {
+        justChanged = false;
+        mycalcul();
+    }
+    document.getElementById('plus').onclick = function() {
+        justChanged = false;
+        INPUT.value += '+';
+    }
+    document.getElementById('ne').onclick = function() {
+        justChanged = false;
+        INPUT.value += '-';
+    }
+    document.getElementById('star').onclick = function() {
+        justChanged = false;
+        INPUT.value += '*';
+    }
+    document.getElementById('div').onclick = function() {
+        justChanged = false;
+        INPUT.value += '/';
+    }
+    document.getElementById('dot').onclick = function() {
+        justChanged = false;
+        INPUT.value += '.';
+    }
+    document.addEventListener('keydown', (event) => {
+      if (event.key == 'Enter') {
+        mycalcul();
+      }
+    })
+
+    mycalcul = function () {
+      justChanged = true;
+      try {
+        var result = INPUT.value.replace(/([a-zA-Z]+)/g, "Math.$1").replace('pi', 'PI').replace('e', 'E');
+        // alert(result);
+        result = parseFloat(eval(result.toString()).toFixed(8)).toString();
+      } catch (err) {
+        var result = "0";
+      }
+      INPUT.value = result;
+    }
+  </script>
+</main>

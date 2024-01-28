@@ -1,0 +1,48 @@
+main {
+    display: flex;
+    flex-direction: column; /* Set the flex direction to column */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px; /* Add vertical space between elements */
+}
+
+button, #CounterValue, #input {
+    display: inline-block; /* Set the display property to inline-block for the buttons */
+    border: 0;
+    width: 120px;
+    border-radius: 10px;
+    background: rgb(82, 82, 82);
+    font-size: 15px;
+    color: #fff;
+    padding: 10px 5px;
+    margin: 5px;
+    text-align: center;
+}
+
+button {
+    cursor: pointer;
+}   
+
+#CounterValue {
+    display: block; /* Set the display property to block for the label */
+    width: 160px;
+    height: 160px;
+    line-height: 160px; /* To center vertically, line-height=height*/
+    font-size: 45px;
+    border-radius: 100%;
+}
+
+#ChangeButtons{
+    border : 5px solid rgb(82, 82, 82);
+    border-radius: 5px;
+}
+
+#Change {
+    display : inline-block;
+    border : 0;
+    font-size: 30px;
+    color: rgb(82, 82, 82);
+    background: transparent;
+    font-weight: bold;
+}

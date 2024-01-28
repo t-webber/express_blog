@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      <%- include('./main.css') %>
+      <%- include('./header.css') %>
+      <%- include('./darkLight.css') %>
+      <%- include('../css/'+ filepath + '.css') %>
+    </style>
+
+    <title>Website | <%= pagetitle %></title>
+  </head>
+
+  <body>
+    <%- include('./header.ejs') %> 
+    <%- include('../html/' + filepath + '.ejs') %>
+
+    <script>
+      <%- include('../js/mathjax.js') %>
+    </script> 
+
+    <script>
+      const darkLightBtn = document.getElementById("darkLightBtn");
+      const classLists = document.body.classList;
+
+      <% if (user.dark) { %>
+        classLists.toggle("dark-theme");
+      <% } else { %>
+        classLists.toggle("light-theme");
+      <% } %>
+
+      function fetchOnClick () {
+      <% if (user.dark) { %>
+        fetch("/light-theme", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      <% } else { %>
+        fetch("/dark-theme", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      <% } %>
+        };
+
+      var nb = 0;
+      function changeOnClick () {
+        nb = parseInt(nb) + 1;
+        if (nb % 2 == 0) {
+          classLists.toggle("dark-theme");
+        } else {
+          classLists.toggle("light-theme");
+        }
+      }
+
+      darkLightBtn.onclick = function () {
+        changeOnClick();
+        fetchOnClick();
+      }
+    </script>
+  </body>
+</html>
