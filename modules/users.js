@@ -1,19 +1,25 @@
-const fs = require('fs');
+const fs = require("fs");
 
-const constants = require('./constants.js');
+const constants = require("./constants.js");
 // const errorModule = require('./error.js');
-const usersPath = './data/users.csv';
-const bcrypt = require('bcryptjs');
+const usersPath = "./data/users.csv";
+const bcrypt = require("bcryptjs");
+
+fs.open(usersPath, "w", function (err, _) {
+  if (err) {
+    console.log(err);
+  }
+});
 
 function compareAsync(param1, param2) {
-  return new Promise(function(resolve, reject) {
-      bcrypt.compare(param1, param2, function(err, res) {
-          if (err) {
-               reject(err);
-          } else {
-               resolve(res);
-          }
-      });
+  return new Promise(function (resolve, reject) {
+    bcrypt.compare(param1, param2, function (err, res) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(res);
+      }
+    });
   });
 }
 
@@ -24,20 +30,20 @@ function lookForUser(body, user) {
         console.log(err);
         reject(err);
       }
-      const lines = data.toString().split('\n');
+      const lines = data.toString().split("\n");
       var exists = false;
       var right = false;
       for (const line of lines) {
-        const elts = line.split(';');
+        const elts = line.split(";");
         if (elts.length != 3) {
-          console.log(' * Reading user of length = ', elts.length);
+          console.log(" * Reading user of length = ", elts.length);
           continue;
         }
         if (elts[1] == body.mail) {
           exists = true;
           const hash_input = await bcrypt.hashSync(body.pass, 10);
-          console.log(' * Hashed input = ', hash_input);
-          console.log(' * Hashed pass = ', elts[2]);
+          console.log(" * Hashed input = ", hash_input);
+          console.log(" * Hashed pass = ", elts[2]);
           right = await compareAsync(body.pass, elts[2]);
           if (right) {
             user.connected = true;
@@ -48,9 +54,9 @@ function lookForUser(body, user) {
         }
       }
       console.log(
-          ' * At the end of lookForUser, (exists, right) = ',
-          exists,
-          right,
+        " * At the end of lookForUser, (exists, right) = ",
+        exists,
+        right
       );
       if (exists && right) {
         resolve(2);
@@ -70,7 +76,7 @@ function writeUser(body, user, data) {
         console.log(err);
         reject(err);
       }
-      console.log(' >>> The user was successfully created <<< ');
+      console.log(" >>> The user was successfully created <<< ");
       user.connected = true;
       user.name = body.name;
       user.mail = body.mail;
@@ -80,49 +86,45 @@ function writeUser(body, user, data) {
 }
 
 async function createUser(body, res, user) {
-  console.log(' * Creating user with fields = ', body);
-  const data = body.name + ';' + body.mail + ';' + body.pass + '\n';
-  console.log(' * Data = ', data);
-  var temp = {};
+  console.log(" * Creating user with fields = ", body);
+  const hashed_pass = await bcrypt.hashSync(body.pass, 10);
+  const data = body.name + ";" + body.mail + ";" + hashed_pass + "\n";
+  console.log(" * Data = ", data);
 
-  lookForUser(body, temp)
-      .then((result) => {
-        if (result != 0) {
-          console.log(` >>> User already exist <<< `);
-          res.redirect('/404');
-        } else {
-          console.log(` >>> User doesn't exist : <<< `);
-          writeUser(body, user, data)
-              .then((result) => {
-                console.log(' * Resolving with x = ', result);
-              });
-          res.redirect('/profile');
-        }
+  lookForUser(body, user).then((result) => {
+    if (result != 0) {
+      console.log(` >>> User already exist <<< `);
+      res.redirect("/404");
+    } else {
+      console.log(` >>> User doesn't exist : <<< `);
+      writeUser(body, user, data).then((result) => {
+        console.log(" * Resolving with x = ", result);
       });
+      res.redirect("/profile");
+    }
+  });
 }
 
 function checkUser(body, res, user) {
   return new Promise(async (resolve, reject) => {
-    console.log(' * Creating user with fields = ', body);
-    const data = body.name + ';' + body.mail + ';' + body.pass + '\n';
-    console.log(' * Data = ', data);
+    console.log(" * Creating user with fields = ", body);
+    const data = body.name + ";" + body.mail + ";" + body.pass + "\n";
+    console.log(" * Data = ", data);
     var temp = {};
 
-    lookForUser(body, user)
-        .then((result) => {
-          if (result == 0) {
-            console.log(` >>> User doesn't exist <<< `);
-            res.redirect('/404');
-          } else if (result == 1) {
-            console.log(` >>> Wrong Password <<< `);
-            res.redirect('/404');
-          } else {
-            console.log(` >>> User exists <<< `);
-            user = temp;
-            res.redirect('/');
-          }
-        });
+    lookForUser(body, user).then((result) => {
+      if (result == 0) {
+        console.log(` >>> User doesn't exist <<< `);
+        res.redirect("/404");
+      } else if (result == 1) {
+        console.log(` >>> Wrong Password <<< `);
+        res.redirect("/404");
+      } else {
+        console.log(` >>> User exists <<< `);
+        res.redirect("/");
+      }
+    });
   });
 }
 
-module.exports = {createUser, checkUser};
+module.exports = { createUser, checkUser };
