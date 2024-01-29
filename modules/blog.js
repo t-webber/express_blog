@@ -2,9 +2,9 @@ const fs = require("fs");
 const errorModule = require("./error.js");
 const blogPath = "./data/blog/";
 
-// if (!fs.existsSync(blogPath)) {
-//   fs.mkdirSync(blogPath, { recursive: true });
-// }
+if (!fs.existsSync(blogPath)) {
+  fs.mkdirSync(blogPath, { recursive: true });
+}
 
 function createBlog(req, res, user) {
   console.log("Creating blog with fields = ", req.body);
