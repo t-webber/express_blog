@@ -1,6 +1,8 @@
 const fs = require("fs");
+const path = require("path");
+
 const errorModule = require("./error.js");
-const blogPath = "./data/blog/";
+const blogPath = path.join(__dirname, "../data/blog/");
 
 // if (!fs.existsSync(blogPath)) {
 //   fs.mkdirSync(blogPath, { recursive: true });

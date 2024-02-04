@@ -1,8 +1,9 @@
 const fs = require("fs");
+const path = require("path");
 
-const constants = require("./constants.js");
+// const constants = require("./constants.js");
 // const errorModule = require('./error.js');
-const usersPath = "./data/users.csv";
+const usersPath = path.join(__dirname, "../data/users.csv");
 const bcrypt = require("bcryptjs");
 
 // fs.open(usersPath, "a", function (err, _) {
@@ -80,7 +81,7 @@ function writeUser(body, user, data) {
       user.connected = true;
       user.name = body.name;
       user.mail = body.mail;
-      resolve(constants.HomePage);
+      resolve(0);
     });
   });
 }
