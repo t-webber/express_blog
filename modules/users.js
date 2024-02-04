@@ -5,11 +5,11 @@ const constants = require("./constants.js");
 const usersPath = "./data/users.csv";
 const bcrypt = require("bcryptjs");
 
-fs.open(usersPath, "a", function (err, _) {
-  if (err) {
-    console.log(err);
-  }
-});
+// fs.open(usersPath, "a", function (err, _) {
+//   if (err) {
+//     console.log(err);
+//   }
+// });
 
 function compareAsync(param1, param2) {
   return new Promise(function (resolve, reject) {
