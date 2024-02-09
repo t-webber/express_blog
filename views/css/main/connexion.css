@@ -1,83 +1,83 @@
-
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("connexion_background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("connexion_background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--bkg-transparent);
-    width: 70vw;
-    height: 70vh;
-    margin: 10vh auto;
-    padding: 0px 40px;
-    padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bkg-transparent);
+  width: 70vw;
+  height: 70vh;
+  margin: 10vh auto;
+  padding: 0px 40px;
+  padding-bottom: 20px;
 }
 
 h1 {
-    color: #b82b09;
-    text-align: center;
+  color: #b82b09;
+  text-align: center;
 }
 
 .input-field {
-    background: var(--bkg-field);
-    color: var(--text-color);
-    margin-bottom: 10px;
-    padding-left: 15px;
-    border: 2px solid transparent;
+  background: var(--bkg-field);
+  color: var(--text-color);
+  margin-bottom: 10px;
+  padding-left: 15px;
+  border: 2px solid transparent;
 }
 
 .input-field input {
-    margin: 10px 0;
-    width: 50vw;
-    padding: 10px;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    background: transparent;
+  margin: 10px 0;
+  width: 50vw;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: transparent;
 }
 
 .forgot {
-    text-align: center;
-    font-weight: bold;
-    color: black;
+  text-align: center;
+  font-weight: bold;
+  color: black;
 }
 
 .forgot a {
-    color: #b82b09;
-    text-decoration: none;
+  color: #b82b09;
+  text-decoration: none;
 }
 
 .btn-field {
-    text-align: center;
+  text-align: center;
 }
 
 .btn-field button {
-    background: #b82b09;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    min-width: 30%;
-    margin: 5px 15px;
-    border-radius: 50px;
-    cursor: pointer;
-    outline: none;
-    font-weight: 700;
-    border: 3px solid #b82b09;
+  background: #b82b09;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  min-width: 30%;
+  margin: 5px 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+  font-weight: 700;
+  border: 3px solid #b82b09;
 }
 
 #signInBtn {
-    color: #b82b09;
-    background: transparent;
+  color: #b82b09;
+  background: transparent;
 }
